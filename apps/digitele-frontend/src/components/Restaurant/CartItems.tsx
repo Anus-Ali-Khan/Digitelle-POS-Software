@@ -23,7 +23,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
   };
   return (
     <div
-      className={`flex flex-col mt-12 justify-between h-full bg-white max-[321px]:rounded-md`}
+      className={`flex flex-col pt-24 justify-between h-full bg-white max-[321px]:rounded-md`}
     >
       {isCartOpen && (
         <RxCross2

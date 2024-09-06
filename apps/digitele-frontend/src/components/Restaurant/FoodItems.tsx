@@ -15,11 +15,11 @@ const FoodItems: FC<FoodItemProps> = ({ isCartOpen, setIsCartOpen }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray h-[calc(100vh-(96px+75px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative mt-24 ">
+    <div className="bg-gray h-[calc(100vh-(96px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative pt-24 -z-10 ">
       <p className="text-Primary font-poppins font-[700] text-[36px] mt-6">
         Food Items
       </p>
-      <div className="flex flex-wrap px-4 justify-around gap-4 mt-2 overflow-y-scroll">
+      <div className="flex flex-wrap px-4 justify-around gap-4 mt-2 overflow-y-auto">
         {foodItemsList.map((item) => (
           <div
             style={{ backgroundImage: `url(${item.img})` }}

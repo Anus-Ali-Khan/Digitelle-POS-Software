@@ -9,10 +9,11 @@ const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className="bg-white px-4 shadow-2xl border-b h-24 fixed w-full max-[1025px]:px-2 max-[769px]:py-1 max-[769px]:h-16 max-[426px]:px-1">
+    <div className="bg-white px-4 shadow-2xl border-b h-24 fixed w-full max-[1025px]:px-2 max-[769px]:py-1 max-[769px]:h-16 max-[426px]:px-1 z-10">
       <div className="flex items-center justify-between relative ">
         <img
           src={Logo}
+          alt="logo"
           className="h-[67px] w-[286px] max-[769px]:h-[50px] max-[769px]:w-[200px] max-[321px]:w-[100px] max-[321px]:h-[20px] max-[321px]:hidden"
         />
         <div className="flex items-center gap-10 max-[1025px]:gap-2 max-[769px]:hidden">
