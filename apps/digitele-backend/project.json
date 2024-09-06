@@ -1,0 +1,26 @@
+{
+  "name": "digitele-backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/digitele-backend/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "digitele-backend:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "digitele-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "digitele-backend:build:production"
+        }
+      }
+    }
+  }
+}
