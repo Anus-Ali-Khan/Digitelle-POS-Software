@@ -23,7 +23,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
   };
   return (
     <div
-      className={`flex flex-col mt-12 justify-between h-full bg-white max-[321px]:rounded-md`}
+      className={`flex flex-col justify-between h-full bg-white max-[321px]:rounded-md  `}
     >
       {isCartOpen && (
         <RxCross2
@@ -32,20 +32,21 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
           onClick={() => setIsCartOpen?.(false)}
         />
       )}
-      <div className="basis-1/2  overflow-y-auto ">
+      <div className="basis-1/2 overflow-y-auto">
         <div className="flex flex-col ">
           <div className="flex items-center justify-center py-6 gap-2 ">
             <img
               src={Cart}
+              alt="cart"
               className="h-[42px] w-[42px]"
             />
             <p className="font-poppins font-[600] text-Primary text-[28px] ">
               Cart Items
             </p>
           </div>
-          <img src={Divider}/>
+          <img src={Divider} alt="divider"/>
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-col  ">
           <div className="flex justify-around mt-6 items-center gap-6max-[1025px]:gap-4 max-[1025px]:px-2">
             <div className="flex flex-col justify-center">
               <p className="font-poppins text-Primary text-[16px] font-[400]">
@@ -64,6 +65,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
               <div className="flex items-center gap-1">
                 <img
                   src={Ticket}
+                  alt="ticket"
                   className="h-[17px] w-[17px]"
                 />
                 <p>$10</p>
@@ -102,6 +104,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
               <div className="flex items-center gap-1">
                 <img
                   src={Ticket}
+                  alt="ticket"
                   className="h-[17px] w-[17px]"
                 />
                 <p>$10</p>
@@ -140,6 +143,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
               <div className="flex items-center gap-1">
                 <img
                   src={Ticket}
+                  alt="ticket"
                   className="h-[17px] w-[17px]"
                 />
                 <p>$10</p>
@@ -201,6 +205,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
             <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-6 py-3 gap-1 max-[1025px]:px-2 ">
               <img
                 src={Coupon}
+                alt="coupon"
                 className="h-[26px] w-[26px]"
               />
               <p className="font-poppins text-[14px] text-Primary font-[400]">
@@ -210,6 +215,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
             <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-6 py-3 gap-1 max-[1025px]:px-2 ">
               <img
                 src={Discount}
+                alt="discount"
                 className="h-[26px] w-[26px]"
               />
               <p className="font-poppins text-[14px] text-Primary font-[400]">
@@ -219,6 +225,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
             <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-4 py-3 gap-1 max-[1025px]:px-1 ">
               <img
                 src={Hold}
+                alt="hold"
                 className="h-[26px] w-[26px]"
               />
               <p className="font-poppins text-[14px] text-Primary font-[400]">

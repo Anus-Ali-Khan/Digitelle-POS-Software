@@ -7,11 +7,12 @@ import Beef from '../../assets/images/beef.svg'
 
 const BottomTab = () => {
   return (
-    <div className="  h-[75px] flex items-center justify-between mx-auto w-[90%] max-[769px]:h-[60px]   ">
+    <div className="h-[75px] flex items-center justify-between mx-auto w-[90%] max-[769px]:h-[60px]   ">
       <div className="flex flex-col items-center">
         <img
           src={BurgerBottom}
           className="w-[42px] h-[35px] max-[769px]:w-[35px]  "
+          alt='burgerBottom'
         />
         <p className="font-[500] text-[10px] font-poppins text-Primary">
           Burgers
@@ -21,6 +22,7 @@ const BottomTab = () => {
         <img
           src={Salad}
           className="w-[42px] h-[35px] max-[769px]:w-[35px] "
+          alt='salad'
         />
         <p className="font-[500] text-[10px] font-poppins text-Primary">
           Salad
@@ -29,6 +31,7 @@ const BottomTab = () => {
       <div className="flex flex-col items-center">
         <img
           src={Sandwiches}
+          alt='sandwiches'
           className="w-[42px] h-[35px] max-[769px]:w-[35px] "
         />
         <p className="font-[500] text-[10px] font-poppins text-Primary">
@@ -38,6 +41,7 @@ const BottomTab = () => {
       <div className="flex flex-col items-center">
         <img
           src={Beef}
+          alt='beef'
           className="w-[42px] h-[35px] max-[769px]:w-[35px]"
         />
         <p className="font-[500] text-[10px] font-poppins text-Primary">Beef</p>

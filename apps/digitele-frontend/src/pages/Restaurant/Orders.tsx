@@ -6,8 +6,8 @@ import FoodItems from "../../components/Restaurant/FoodItems";
 const Orders = () => {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   return (
-    <div className="flex justify-between items-between w-full">
-      <div className="flex flex-col basis-[70%] justify-between w-full max-[769px]:basis-[100%]">
+    <div className="flex justify-between items-between w-full h-[calc(100vh-96px)] ">
+      <div className="flex flex-col basis-[70%] justify-between w-full max-[769px]:basis-[100%] max-[769px]:h-[calc(100vh-60px)] max-[321px]:h-[calc(100vh-56px)]">
         <FoodItems setIsCartOpen={setIsCartOpen} isCartOpen={isCartOpen} />
         <BottomTab />
       </div>

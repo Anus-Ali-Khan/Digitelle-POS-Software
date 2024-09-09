@@ -10,10 +10,10 @@ import CustomButton from "../../components/Restaurant/CustomButton";
 
 const AddItems = () => {
   return (
-    <div className="bg-Secondary min-h-screen pt-16  max-h-fit  w-screen flex items-center justify-center max-[769px]:pt-18 ">
+    <div className="bg-Secondary min-h-screen max-h-fit w-screen flex items-center justify-center ">
       <form className="bg-white h-fit w-[32rem] rounded-xl flex flex-col items-center justify-center  py-6 max-[768px]:w-[26rem] max-[769px]:my-6 max-[426px]:w-[22rem] max-[321px]:w-[18rem]">
-        <img src={Logo} className="max-[768px]:h-14 max-[321px]:h-12" />
-        <img src={Divider} className="mt-4" />
+        <img src={Logo} alt="logo" className="max-[768px]:h-14 max-[321px]:h-12" />
+        <img src={Divider} alt="divider" className="mt-4" />
         <h1 className="text-4xl font-bold  font-poppins mt-4 max-[768px]:text-2xl">
           Add Item
         </h1>
@@ -23,7 +23,7 @@ const AddItems = () => {
             type="text"
             borderRadius="lg"
             icon={<CiUser />}
-            className="max-[321px]:w-full"
+            className="max-[321px]:w-full "
           />
           <CustomInput
             placeholder="Quantity"
