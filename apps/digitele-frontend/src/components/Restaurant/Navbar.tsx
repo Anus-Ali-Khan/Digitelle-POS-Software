@@ -13,7 +13,7 @@ setSelectedTab:React.Dispatch<React.SetStateAction<string>>
 const Navbar = ({selectedTab,setSelectedTab}:NavItemsPropsType) => {
   const [open, setOpen] = useState<boolean>(false);
  
-
+  
   return (
     <div className="bg-white px-4 shadow-2xl border-b h-24 w-full max-[1025px]:px-2 max-[769px]:py-1 max-[769px]:h-16 max-[426px]:px-1 max-[321px]:h-14">
       <div className="flex items-center justify-between relative ">
