@@ -1,10 +1,11 @@
-import { MdOutlineShoppingCart } from "react-icons/md";
-import { foodItemsList } from "../../utils/constants";
-import CustomButton from "./CustomButton";
-import { FaPlus } from "react-icons/fa6";
-import { FC } from "react";
-import CartItems from "./CartItems";
-import { useNavigate } from "react-router";
+import { MdOutlineShoppingCart } from 'react-icons/md';
+import { foodItemsList } from '../../utils/constants';
+import CustomButton from './CustomButton';
+import { FaPlus } from 'react-icons/fa6';
+import { FC } from 'react';
+import CartItems from './CartItems';
+import { useNavigate } from 'react-router';
+
 
 type FoodItemProps = {
   isCartOpen: boolean;
@@ -13,15 +14,15 @@ type FoodItemProps = {
 
 const FoodItems: FC<FoodItemProps> = ({ isCartOpen, setIsCartOpen }) => {
   const navigate = useNavigate();
-
   return (
-    <div className="bg-gray h-[calc(100vh-(96px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative pt-24 -z-10 ">
+    <div className="bg-gray h-[calc(100vh-(96px+75px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative">
       <p className="text-Primary font-poppins font-[700] text-[36px] mt-6">
         Food Items
       </p>
       <div className="flex flex-wrap px-4 justify-around gap-4 mt-2 overflow-y-auto">
         {foodItemsList.map((item) => (
           <div
+            key={item.id}
             style={{ backgroundImage: `url(${item.img})` }}
             className="flex flex-col text-white h-[200px] w-[200px] rounded-md bg-cover relative max-[426px]:w-[300px] max-[321px]:w-[250px]"
           >
@@ -48,8 +49,8 @@ const FoodItems: FC<FoodItemProps> = ({ isCartOpen, setIsCartOpen }) => {
           paddingVertical="py-4"
           fontSize="text-[14px]"
           fontWeight="font-[700]"
-          onClick={() => navigate("/additems")}
-          className="max-[769px]:px-4 max-[769px]:py-3 max-[321px]:text-[12px] max-[321px]:px-3"
+          onClick={() => navigate('/additems')}
+          className="max-[769px]:px-4 max-[769px]:py-3 max-[321px]:text-[12px] max-[321px]:px-3 "
         />
         <CustomButton
           title="Add Categories"
@@ -57,7 +58,7 @@ const FoodItems: FC<FoodItemProps> = ({ isCartOpen, setIsCartOpen }) => {
           paddingVertical="py-4"
           fontSize="text-[14px]"
           fontWeight="font-[700]"
-          className="max-[769px]:px-4 max-[769px]:py-3 max-[321px]:text-[12px] max-[321px]:px-3"
+          className="max-[769px]:px-4 max-[769px]:py-3 max-[321px]:text-[12px] max-[321px]:px-3 "
         />
       </div>
       <div className="min-[769px]:hidden absolute right-8 bottom-3 bg-white rounded-full p-3 hover:text-white hover:bg-Primary max-[426px]:right-2">

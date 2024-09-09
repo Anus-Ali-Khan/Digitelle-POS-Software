@@ -7,7 +7,7 @@ import Beef from '../../assets/images/beef.svg'
 
 const BottomTab = () => {
   return (
-    <div className="  h-[75px] flex items-center justify-between mx-auto w-[90%] max-[769px]:h-[60px]   ">
+    <div className="h-[75px] flex items-center justify-between mx-auto w-[90%] max-[769px]:h-[60px]   ">
       <div className="flex flex-col items-center">
         <img
           src={BurgerBottom}

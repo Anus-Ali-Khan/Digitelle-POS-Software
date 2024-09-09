@@ -26,7 +26,7 @@ export const navLinks: navLinksTypes[] = [
     id: 2,
     title: "Stock",
     icon: (
-      <img src={Stock} className=" max-[769px]:w-6 " />
+      <img src={Stock} alt='stock' className=" max-[769px]:w-6 " />
     ),
   },
   {
@@ -49,6 +49,7 @@ export const navLinks: navLinksTypes[] = [
 ];
 
 type foodItemsTypes = {
+  id:number,
   title: string;
   price: string;
   img: string;
@@ -56,61 +57,73 @@ type foodItemsTypes = {
 
 export const foodItemsList: foodItemsTypes[] = [
   {
+    id:1,
     title: "Zinger Burger",
     price: "$30",
     img: Burger,
   },
   {
+    id:2,
     title: "Smashed Avo",
     price: "$30",
     img: Avo,
   },
   {
+    id:3,
     title: "Huevos Rancheros",
     price: "$10",
     img: Rancheros,
   },
   {
+    id:4,
     title: "Zinger Burger",
     price: "$30",
     img: Burger,
   },
   {
+    id:5,
     title: "Smashed Avo",
     price: "$30",
     img: Avo,
   },
   {
+    id:6,
     title: "Huevos Rancheros",
     price: "$10",
     img: Rancheros,
   },
   {
+    id:7,
     title: "Zinger Burger",
     price: "$30",
     img: Burger,
   },
   {
+    id:8,
     title: "Smashed Avo",
     price: "$30",
     img: Avo,
   },
   {
+    id:9,
     title: "Huevos Rancheros",
     price: "$10",
     img: Rancheros,
   },
   {
+    id:10,
     title: "Zinger Burger",
     price: "$30",
     img: Burger,
   },
   {
+    id:11,
     title: "Smashed Avo",
     price: "$30",
     img: Avo,
   },
   {
+    id:12,
     title: "Huevos Rancheros",
     price: "$10",
     img: Rancheros,
