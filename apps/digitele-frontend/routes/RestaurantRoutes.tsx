@@ -5,6 +5,7 @@ import Orders from "../src/pages/Restaurant/Orders";
 import RestaurantLayout from "../src/components/RestaurantLayout";
 import PayNow from "../src/pages/Restaurant/PayNow";
 import AddItems from "../src/pages/Restaurant/AddItems";
+import Users from "../src/pages/Restaurant/Users";
 
 const RestaurantRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const RestaurantRoutes = () => {
           <Route path="/orders" element={<Orders />} />
           <Route path="/paynow" element={<PayNow />} />
           <Route path="/additems" element={<AddItems />} />
+          <Route path="/users" element={<Users/>} />
         </Route>
       </Routes>
     </Router>

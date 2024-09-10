@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import Navbar from "./Restaurant/Navbar";
 import { Outlet } from "react-router";
 
-enum tabs {
+export enum tabs {
   Items='Items',
   Stock='Stock',
   Users='Users',
@@ -15,8 +15,8 @@ const RestaurantLayout: FC = () => {
   return (
     <div className="flex flex-col">
       <Navbar selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-      <div className="flex">
-        <Outlet />
+      <div>
+        <Outlet context={[selectedTab]} />
       </div>
     </div>
   );

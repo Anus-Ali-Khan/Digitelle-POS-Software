@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { IoMdRestaurant } from "react-icons/io";
 import { HiUsers } from "react-icons/hi2";
 import { LiaClipboardListSolid } from "react-icons/lia";
@@ -7,6 +7,8 @@ import Burger from "../assets/images/Burger.png";
 import Avo from "../assets/images/Avo.png";
 import Rancheros from "../assets/images/Rancheros.png";
 import Stock from '../assets/images/stock1.svg'
+import ProfilePic from '../assets/images/profile.svg'
+import { FaArrowRight } from "react-icons/fa6";
 
 type navLinksTypes = {
   id: number;
@@ -180,3 +182,19 @@ export const numbersCard: string[] = [
   ".",
   "00",
 ];
+
+type StaffListTypes  ={
+  profilePic:ReactNode,
+  name:string,
+  icon:ReactNode,
+
+}
+
+
+export const StaffList: StaffListTypes[] = [
+  {
+    profilePic:<img src={ProfilePic} alt="profile" className="" />,
+    name:'John',
+    icon:<FaArrowRight />
+  }
+]

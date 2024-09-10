@@ -13,6 +13,7 @@ setSelectedTab:React.Dispatch<React.SetStateAction<string>>
 const Navbar = ({selectedTab,setSelectedTab}:NavItemsPropsType) => {
   const [open, setOpen] = useState<boolean>(false);
  
+  console.log(selectedTab)
   
   return (
     <div className="bg-white px-4 shadow-2xl border-b h-24 w-full max-[1025px]:px-2 max-[769px]:py-1 max-[769px]:h-16 max-[426px]:px-1 max-[321px]:h-14">
@@ -26,7 +27,7 @@ const Navbar = ({selectedTab,setSelectedTab}:NavItemsPropsType) => {
           {navLinks.map((item) => (
             <div
               key={item.id}
-              className={`flex flex-col items-center justify-center h-24 w-24 ${selectedTab === item.title ? 'bg-Primary text-white' : null}`}
+              className={`flex flex-col items-center justify-center h-24 w-24 cursor-pointer ${selectedTab === item.title ? 'bg-Primary text-white' : null}`}
               onClick={() => setSelectedTab(item.title)}
             >
               {item.icon}
