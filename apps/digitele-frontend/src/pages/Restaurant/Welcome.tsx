@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router";
-import CustomButton from "../../components/Restaurant/CustomButton";
-import DineIn from '../../assets/images/Dinein.png'
-import Takeaway from '../../assets/images/takeaway.png'
+import { useNavigate } from 'react-router';
+import CustomButton from '../../components/Restaurant/CustomButton';
+import DineIn from '../../assets/images/Dinein.png';
+import Takeaway from '../../assets/images/takeaway.png';
 
 const Welcome = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/orders");
+    navigate('/items');
   };
   return (
     <div className=" bg-gradient-to-r from-[#02A0B9] to-[#043258] h-[100vh]">

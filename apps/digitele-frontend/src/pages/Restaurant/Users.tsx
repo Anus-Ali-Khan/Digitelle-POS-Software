@@ -1,14 +1,23 @@
-import { useOutletContext } from 'react-router';
-import { tabs } from '../../components/RestaurantLayout';
+import { useState } from 'react';
+import StaffMembersTab from '../../components/Restaurant/StaffMembersTab';
+import AddStaffTab from '../../components/Restaurant/AddStaffTab';
+
+export enum usersTabs {
+  Staff = 'Staff',
+  AddStaff = 'AddStaff',
+}
 
 const Users = () => {
-  const [selectedTab] = useOutletContext<string>();
+  const [selectedStaffTab, setSelectedStaffTab] = useState<usersTabs>(
+    usersTabs.Staff
+  );
+
   return (
-    <div className="bg-Secondary">
-      {selectedTab === tabs.Users && (
-        <div className="bg-Secondary flex justify-between items-between w-full h-[calc(100vh-96px)] ">
-          <p>Add Staff</p>
-        </div>
+    <div className="bg-Secondary  w-full min-h-[calc(100vh-96px)] overflow-y-auto max-[769px]:h-[calc(100vh-64px)] max-[321px]:h-[calc(100vh-56px)] ">
+      {selectedStaffTab === usersTabs.Staff ? (
+        <StaffMembersTab setSelectedStaffTab={setSelectedStaffTab} />
+      ) : (
+        <AddStaffTab setSelectedStaffTab={setSelectedStaffTab} />
       )}
     </div>
   );

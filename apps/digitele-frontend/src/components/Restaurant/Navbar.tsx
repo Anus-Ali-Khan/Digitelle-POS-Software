@@ -1,20 +1,14 @@
-import { GiHamburgerMenu } from "react-icons/gi";
-import { navLinks } from "../../utils/constants";
-import { useState } from "react";
-import { RxCross2 } from "react-icons/rx";
-import Sobo from "../../assets/images/sobo.svg";
-import Logo from "../../assets/images/Logo.png";
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { navLinks } from '../../utils/constants';
+import { useState } from 'react';
+import { RxCross2 } from 'react-icons/rx';
+import Sobo from '../../assets/images/sobo.svg';
+import Logo from '../../assets/images/Logo.png';
+import { NavLink } from 'react-router-dom';
 
-type NavItemsPropsType = {
-selectedTab:string,
-setSelectedTab:React.Dispatch<React.SetStateAction<string>>
-}
-
-const Navbar = ({selectedTab,setSelectedTab}:NavItemsPropsType) => {
+const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
- 
-  console.log(selectedTab)
-  
+
   return (
     <div className="bg-white px-4 shadow-2xl border-b h-24 w-full max-[1025px]:px-2 max-[769px]:py-1 max-[769px]:h-16 max-[426px]:px-1 max-[321px]:h-14">
       <div className="flex items-center justify-between relative ">
@@ -25,16 +19,20 @@ const Navbar = ({selectedTab,setSelectedTab}:NavItemsPropsType) => {
         />
         <div className="flex items-center gap-10 max-[1025px]:gap-2 max-[769px]:hidden">
           {navLinks.map((item) => (
-            <div
+            <NavLink
+              to={item.href}
               key={item.id}
-              className={`flex flex-col items-center justify-center h-24 w-24 cursor-pointer ${selectedTab === item.title ? 'bg-Primary text-white' : null}`}
-              onClick={() => setSelectedTab(item.title)}
+              className={({ isActive }) =>
+                `flex flex-col items-center justify-center h-24 w-24 cursor-pointer  ${
+                  isActive ? 'bg-Primary text-white' : 'text-Primary'
+                }`
+              }
             >
               {item.icon}
-              <p className={`text-[12px] font-poppins text-Primary font-[700] ${selectedTab === item.title ? 'text-white' : null}`}>
+              <p className={`text-[12px] font-poppins font-[700] `}>
                 {item.title}
               </p>
-            </div>
+            </NavLink>
           ))}
         </div>
 
