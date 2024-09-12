@@ -250,3 +250,56 @@ export const StaffList: StaffListTypes[] = [
     icon: <FaArrowRight />,
   },
 ];
+
+type StockListTypes = {
+  id: number;
+  item: string;
+  price: string;
+  date: string;
+  quantity: string;
+};
+
+export const stockList: StockListTypes[] = [
+  {
+    id: 1,
+    item: 'Sugar',
+    price: '$100',
+    date: '23-jan-2024',
+    quantity: '10kg',
+  },
+  {
+    id: 2,
+    item: 'Sugar',
+    price: '$100',
+    date: '23-jan-2024',
+    quantity: '10kg',
+  },
+  {
+    id: 3,
+    item: 'Sugar',
+    price: '$100',
+    date: '23-jan-2024',
+    quantity: '10kg',
+  },
+  {
+    id: 4,
+    item: 'Sugar',
+    price: '$100',
+    date: '23-jan-2024',
+    quantity: '10kg',
+  },
+  {
+    id: 5,
+    item: 'Sugar',
+    price: '$100',
+    date: '23-jan-2024',
+    quantity: '10kg',
+  },
+  {
+    id: 6,
+    item: 'Sugar',
+    price: '$100',
+    date: '23-jan-2024',
+    quantity: '10kg',
+  },
+];

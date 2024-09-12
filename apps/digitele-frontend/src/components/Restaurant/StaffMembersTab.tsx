@@ -22,7 +22,7 @@ const StaffMembersTab = ({ setSelectedStaffTab }: PropsType) => {
         <p className="font-bold font-poppins text-white text-4xl ">
           Staff Members
         </p>
-        <div className=" flex w-[80%] flex-wrap justify-between items-center gap-8 mt-4 mb-8 max-[769px]:justify-around  ">
+        <div className=" flex w-[80%] flex-wrap justify-between items-center gap-8 mt-4 mb-8 max-[769px]:justify-around">
           {StaffList.map((item) => (
             <div
               key={item.id}
