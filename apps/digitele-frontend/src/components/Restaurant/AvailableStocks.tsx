@@ -21,8 +21,8 @@ const AvailableStocks = ({ setSelectedStockTab }: PropsType) => {
         />
       </div>
       <div className="bg-white flex flex-col gap-2  py-6 px-4 items-center h-[35rem] w-[40%] m-auto rounded-lg shadow-xl mb-4 max-[769px]:w-[50%] ">
-        <img src={Logo} />
-        <img src={Dividerpng} />
+        <img src={Logo} alt='logo'/>
+        <img src={Dividerpng} alt='' />
         <p className="font-bold text-4xl font-poppins">Stock</p>
         <table className="h-[20rem] overflow-y-scroll w-[85%] max-[769px]:w-[95%]   ">
           <thead className="">
