@@ -1,18 +1,27 @@
-import { CiUser } from "react-icons/ci";
-import Logo from "../../assets/images/Logo.png";
-import Divider from "../../assets/images/divider.png";
-import CustomInput from "../../components/Restaurant/CustomInput";
-import { LiaCubesSolid } from "react-icons/lia";
-import { IoPricetagOutline } from "react-icons/io5";
-import { TbCategoryPlus } from "react-icons/tb";
-import { BsPaperclip } from "react-icons/bs";
-import CustomButton from "../../components/Restaurant/CustomButton";
+import { CiUser } from 'react-icons/ci';
+import Logo from '../../assets/images/Logo.png';
+import Divider from '../../assets/images/divider.png';
+import CustomInput from '../../components/Restaurant/CustomInput';
+import { LiaCubesSolid } from 'react-icons/lia';
+import { IoPricetagOutline } from 'react-icons/io5';
+import { TbCategoryPlus } from 'react-icons/tb';
+import { BsPaperclip } from 'react-icons/bs';
+import CustomButton from '../../components/Restaurant/CustomButton';
+import { ItemsTabs } from '../../pages/Restaurant/Items';
 
-const AddItems = () => {
+type PropsType = {
+  setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
+};
+
+const AddItems = ({ setSelectedItemsTab }: PropsType) => {
   return (
     <div className="bg-Secondary min-h-screen max-h-fit w-screen flex items-center justify-center ">
       <form className="bg-white h-fit w-[32rem] rounded-xl flex flex-col items-center justify-center py-6 max-[768px]:w-[26rem] max-[769px]:my-6 max-[426px]:w-[22rem] max-[321px]:w-[18rem]">
-        <img src={Logo} alt="logo" className="max-[768px]:h-14 max-[321px]:h-12" />
+        <img
+          src={Logo}
+          alt="logo"
+          className="max-[768px]:h-14 max-[321px]:h-12"
+        />
         <img src={Divider} alt="divider" className="mt-4" />
         <h1 className="text-4xl font-bold  font-poppins mt-4 max-[768px]:text-2xl">
           Add Item
@@ -62,6 +71,7 @@ const AddItems = () => {
           paddingVertical="py-4"
           borderRadius="xl"
           className="mt-4"
+          onClick={() => setSelectedItemsTab(ItemsTabs.Items)}
         />
       </form>
     </div>

@@ -2,18 +2,22 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { foodItemsList } from '../../utils/constants';
 import CustomButton from './CustomButton';
 import { FaPlus } from 'react-icons/fa6';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import CartItems from './CartItems';
 import { useNavigate } from 'react-router';
-
+import { ItemsTabs } from '../../pages/Restaurant/Items';
 
 type FoodItemProps = {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
 };
 
-const FoodItems: FC<FoodItemProps> = ({ isCartOpen, setIsCartOpen }) => {
-  const navigate = useNavigate();
+const FoodItems: FC<FoodItemProps> = ({
+  isCartOpen,
+  setIsCartOpen,
+  setSelectedItemsTab,
+}: FoodItemProps) => {
   return (
     <div className="bg-gray h-[calc(100vh-(96px+75px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative">
       <p className="text-Primary font-poppins font-[700] text-[36px] mt-6">
@@ -49,7 +53,7 @@ const FoodItems: FC<FoodItemProps> = ({ isCartOpen, setIsCartOpen }) => {
           paddingVertical="py-4"
           fontSize="text-[14px]"
           fontWeight="font-[700]"
-          onClick={() => navigate('/additems')}
+          onClick={() => setSelectedItemsTab(ItemsTabs.AddItem)}
           className="max-[769px]:px-4 max-[769px]:py-3 max-[321px]:text-[12px] max-[321px]:px-3 "
         />
         <CustomButton
@@ -59,6 +63,7 @@ const FoodItems: FC<FoodItemProps> = ({ isCartOpen, setIsCartOpen }) => {
           fontSize="text-[14px]"
           fontWeight="font-[700]"
           className="max-[769px]:px-4 max-[769px]:py-3 max-[321px]:text-[12px] max-[321px]:px-3 "
+          onClick={() => setSelectedItemsTab(ItemsTabs.AddCategories)}
         />
       </div>
       <div className="min-[769px]:hidden absolute right-8 bottom-3 bg-white rounded-full p-3 hover:text-white hover:bg-Primary max-[426px]:right-2">
