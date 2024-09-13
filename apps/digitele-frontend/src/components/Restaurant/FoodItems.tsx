@@ -2,9 +2,8 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { foodItemsList } from '../../utils/constants';
 import CustomButton from './CustomButton';
 import { FaPlus } from 'react-icons/fa6';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import CartItems from './CartItems';
-import { useNavigate } from 'react-router';
 import { ItemsTabs } from '../../pages/Restaurant/Items';
 
 type FoodItemProps = {

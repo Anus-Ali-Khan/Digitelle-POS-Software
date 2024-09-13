@@ -6,6 +6,7 @@ import RestaurantLayout from '../src/components/RestaurantLayout';
 import PayNow from '../src/pages/Restaurant/PayNow';
 import Users from '../src/pages/Restaurant/Users';
 import Stocks from '../src/pages/Restaurant/Stocks';
+import Orders from '../src/pages/Restaurant/Orders';
 
 const RestaurantRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const RestaurantRoutes = () => {
           <Route path="/paynow" element={<PayNow />} />
           <Route path="/users" element={<Users />} />
           <Route path="/stocks" element={<Stocks />} />
+          <Route path="/orders" element={<Orders />} />
         </Route>
       </Routes>
     </Router>

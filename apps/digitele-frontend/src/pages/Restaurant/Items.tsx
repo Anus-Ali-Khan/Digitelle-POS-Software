@@ -18,7 +18,7 @@ const Orders = () => {
   );
 
   return (
-    <>
+    <div>
       {selectedItemsTab === ItemsTabs.Items ? (
         <div className="flex justify-between items-between w-full h-[calc(100vh-96px)] ">
           <div className="flex flex-col basis-[70%] justify-between w-full max-[769px]:basis-[100%] max-[769px]:h-[calc(100vh-60px)] max-[321px]:h-[calc(100vh-56px)]">
@@ -36,9 +36,9 @@ const Orders = () => {
       ) : selectedItemsTab === ItemsTabs.AddItem ? (
         <AddItems setSelectedItemsTab={setSelectedItemsTab} />
       ) : (
-        <AddCategories />
+        <AddCategories  setSelectedItemsTab={setSelectedItemsTab} />
       )}
-    </>
+    </div>
   );
 };
 

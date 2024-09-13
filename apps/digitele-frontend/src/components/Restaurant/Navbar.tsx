@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import Sobo from '../../assets/images/sobo.svg';
 import Logo from '../../assets/images/Logo.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigation = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -67,7 +68,8 @@ const Navbar = () => {
           <div className=" min-[769px]:hidden w-[250px] px-3 py-2 rounded-md absolute top-12 -right-2 bg-white z-10 ">
             <div className="flex flex-col gap-2 mt-2  ">
               {navLinks.map((item) => (
-                <div
+                <NavLink
+                  to={item.href}
                   key={item.id}
                   className="flex items-center gap-2  border-b border-[#AEADAD] py-2 px-1 hover:text-white hover:bg-Primary cursor-pointer"
                 >
@@ -75,7 +77,7 @@ const Navbar = () => {
                   <p className="text-[12px] font-poppins text-Primary font-[700] hover:text-white">
                     {item.title}
                   </p>
-                </div>
+                </NavLink>
               ))}
             </div>
           </div>
