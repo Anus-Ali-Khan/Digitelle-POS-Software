@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common/decorators/core';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { addFoodDto } from '../dto/addFood.dto';
-import { updateFoodDto } from '../dto/updateFood.dto';
-import { Food } from '../schema/food.schema';
-import { IFood, IFoodAll } from '../types/food.type';
+import { addFoodDto } from 'app/dto/addFood.dto';
+import { updateFoodDto } from 'app/dto/updateFood.dto';
+import { Food } from 'app/schema/food.schema';
+import { IFood, IFoodAll } from 'app/types/food.type';
 
 @Injectable()
 export class FoodService {
