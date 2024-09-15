@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "files": [],
-  "include": [],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.d.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.app.json"
@@ -11,6 +14,16 @@
     }
   ],
   "compilerOptions": {
-    "esModuleInterop": true
+    "baseUrl": "./src",
+    "composite": true,
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strictNullChecks": false,
+    "declaration": true
   }
 }
