@@ -1,19 +1,23 @@
-import { useEffect } from "react";
-import Modal from "./Modal";
-import { Description } from "@headlessui/react";
-import { Commet } from "react-loading-indicators";
+import { useEffect } from 'react';
+import Modal from './Modal';
+import { Description } from '@headlessui/react';
+import { Commet } from 'react-loading-indicators';
 
 type PropsType = {
   openLoaderModal: boolean;
   setOpenLoaderModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setOpenPrintModal:React.Dispatch<React.SetStateAction<boolean>> 
+  setOpenPrintModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const LoadingModal = ({ openLoaderModal, setOpenLoaderModal, setOpenPrintModal }: PropsType) => {
+const LoadingModal = ({
+  openLoaderModal,
+  setOpenLoaderModal,
+  setOpenPrintModal,
+}: PropsType) => {
   useEffect(() => {
     setTimeout(() => {
       setOpenLoaderModal(false);
-      setOpenPrintModal(true)
+      setOpenPrintModal(true);
     }, 2000);
   }, []);
 
@@ -23,15 +27,15 @@ const LoadingModal = ({ openLoaderModal, setOpenLoaderModal, setOpenPrintModal }
         openModal={openLoaderModal}
         setOpenModal={setOpenLoaderModal}
         showPrintButton={false}
+        showCancelButton={true}
       >
         <Description>
           <Commet color="#02A0B9" size="medium" text="" textColor="" />
         </Description>
-       
-          <p className="font-poppins font-medium text-2xl text-Primary">
-            Present Card
-          </p>
-        
+
+        <p className="font-poppins font-medium text-2xl text-Primary">
+          Present Card
+        </p>
       </Modal>
     </>
   );

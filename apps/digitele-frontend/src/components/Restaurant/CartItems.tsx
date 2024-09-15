@@ -1,26 +1,27 @@
-import { FaPlus } from "react-icons/fa6";
-import CustomButton from "./CustomButton";
-import { BsDash } from "react-icons/bs";
-import { RxCross2 } from "react-icons/rx";
-import { useNavigate } from "react-router";
-import Cart from '../../assets/images/cart.svg'
-import Divider from '../../assets/images/divider.png'
-import Ticket from '../../assets/images/ticket.svg'
-import Coupon from '../../assets/images/coupon.svg'
-import Discount from '../../assets/images/discount.svg'
-import Hold from '../../assets/images/hold.svg'
+import { FaPlus } from 'react-icons/fa6';
+import CustomButton from './CustomButton';
+import { BsDash } from 'react-icons/bs';
+import { RxCross2 } from 'react-icons/rx';
+import { useNavigate } from 'react-router';
+import Cart from '../../assets/images/cart.svg';
+import Divider from '../../assets/images/divider.png';
+import Ticket from '../../assets/images/ticket.svg';
+import Coupon from '../../assets/images/coupon.svg';
+import Discount from '../../assets/images/discount.svg';
+import Hold from '../../assets/images/hold.svg';
+import { ItemsTabs } from '../../pages/Restaurant/Items';
 
 type CartItemProps = {
   isCartOpen?: boolean;
   setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
 };
 
-const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
-  const navigate = useNavigate();
-
-  const handleNavigateToPayNow = () => {
-    navigate("/paynow");
-  };
+const CartItems = ({
+  isCartOpen,
+  setIsCartOpen,
+  setSelectedItemsTab,
+}: CartItemProps) => {
   return (
     <div
       className={`flex flex-col justify-between h-full bg-white max-[321px]:rounded-md  `}
@@ -35,16 +36,12 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
       <div className="basis-1/2 overflow-y-auto">
         <div className="flex flex-col ">
           <div className="flex items-center justify-center py-6 gap-2 ">
-            <img
-              src={Cart}
-              alt="cart"
-              className="h-[42px] w-[42px]"
-            />
+            <img src={Cart} alt="cart" className="h-[42px] w-[42px]" />
             <p className="font-poppins font-[600] text-Primary text-[28px] ">
               Cart Items
             </p>
           </div>
-          <img src={Divider} alt="divider"/>
+          <img src={Divider} alt="divider" />
         </div>
         <div className="flex flex-col  ">
           <div className="flex justify-around mt-6 items-center gap-6max-[1025px]:gap-4 max-[1025px]:px-2">
@@ -63,11 +60,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
             </div>
             <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
               <div className="flex items-center gap-1">
-                <img
-                  src={Ticket}
-                  alt="ticket"
-                  className="h-[17px] w-[17px]"
-                />
+                <img src={Ticket} alt="ticket" className="h-[17px] w-[17px]" />
                 <p>$10</p>
               </div>
               <div className="flex items-center gap-2">
@@ -102,11 +95,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
             </div>
             <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
               <div className="flex items-center gap-1">
-                <img
-                  src={Ticket}
-                  alt="ticket"
-                  className="h-[17px] w-[17px]"
-                />
+                <img src={Ticket} alt="ticket" className="h-[17px] w-[17px]" />
                 <p>$10</p>
               </div>
               <div className="flex items-center gap-2">
@@ -141,11 +130,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
             </div>
             <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
               <div className="flex items-center gap-1">
-                <img
-                  src={Ticket}
-                  alt="ticket"
-                  className="h-[17px] w-[17px]"
-                />
+                <img src={Ticket} alt="ticket" className="h-[17px] w-[17px]" />
                 <p>$10</p>
               </div>
               <div className="flex items-center gap-2">
@@ -203,11 +188,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
           </div>
           <div className="flex mt-6 justify-between">
             <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-6 py-3 gap-1 max-[1025px]:px-2 ">
-              <img
-                src={Coupon}
-                alt="coupon"
-                className="h-[26px] w-[26px]"
-              />
+              <img src={Coupon} alt="coupon" className="h-[26px] w-[26px]" />
               <p className="font-poppins text-[14px] text-Primary font-[400]">
                 Coupon
               </p>
@@ -223,11 +204,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
               </p>
             </div>
             <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-4 py-3 gap-1 max-[1025px]:px-1 ">
-              <img
-                src={Hold}
-                alt="hold"
-                className="h-[26px] w-[26px]"
-              />
+              <img src={Hold} alt="hold" className="h-[26px] w-[26px]" />
               <p className="font-poppins text-[14px] text-Primary font-[400]">
                 Hold Order
               </p>
@@ -236,7 +213,7 @@ const CartItems = ({ isCartOpen, setIsCartOpen }: CartItemProps) => {
         </div>
         <div
           className="h-[75px] bg-Secondary  max-[321px]:rounded-b-md cursor-pointer"
-          onClick={handleNavigateToPayNow}
+          onClick={() => setSelectedItemsTab(ItemsTabs.PayNow)}
         >
           <div className="flex justify-between items-center mx-auto w-[80%] h-full ">
             <p className="font-poppins font-[700] text-[22px] text-white">

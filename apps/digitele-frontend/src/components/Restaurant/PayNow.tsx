@@ -1,8 +1,13 @@
-import { useState } from "react";
-import CartItems from "../../components/Restaurant/CartItems";
-import PaymentSection from "../../components/Restaurant/PaymentSection";
+import { useState } from 'react';
+import CartItems from './CartItems';
+import PaymentSection from './PaymentSection';
+import { ItemsTabs } from '../../pages/Restaurant/Items';
 
-const PayNow = () => {
+type PropsType = {
+  setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
+};
+
+const PayNow = ({ setSelectedItemsTab }: PropsType) => {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
@@ -14,10 +19,15 @@ const PayNow = () => {
           setIsCartOpen={setIsCartOpen}
           openModal={openModal}
           setOpenModal={setOpenModal}
+          setSelectedItemsTab={setSelectedItemsTab}
         />
       </div>
       <div className="basis-[30%] h-[calc(100vh-96px)] w-full max-[769px]:hidden">
-        <CartItems isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+        <CartItems
+          isCartOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+          setSelectedItemsTab={setSelectedItemsTab}
+        />
       </div>
     </div>
   );

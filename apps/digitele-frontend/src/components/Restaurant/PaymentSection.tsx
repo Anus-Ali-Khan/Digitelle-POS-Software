@@ -1,38 +1,57 @@
-import { FaArrowLeft } from "react-icons/fa6";
-import { amountCards, numbersCard, paymentCards } from "../../utils/constants";
-import CustomButton from "./CustomButton";
-import CustomInput from "./CustomInput";
-import { MdOutlineShoppingCart } from "react-icons/md";
-import CartItems from "./CartItems";
-import LoadingModal from "./Modals/LoadingModal";
-import PrintModal from "./Modals/PrintModal";
-import { useState } from "react";
+import { FaArrowLeft } from 'react-icons/fa6';
+import { amountCards, numbersCard, paymentCards } from '../../utils/constants';
+import CustomButton from './CustomButton';
+import CustomInput from './CustomInput';
+import { MdOutlineShoppingCart } from 'react-icons/md';
+import CartItems from './CartItems';
+import LoadingModal from './Modals/LoadingModal';
+import PrintModal from './Modals/PrintModal';
+import { useState } from 'react';
+import PrintSlipModal from './Modals/PrintSlipModal';
+import { ItemsTabs } from '../../pages/Restaurant/Items';
 
 type PropsType = {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   openModal: boolean;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
 };
 
 const PaymentSection = ({
   isCartOpen,
   setIsCartOpen,
+  setSelectedItemsTab,
   openModal,
   setOpenModal,
 }: PropsType) => {
-const [openLoaderModal,setOpenLoaderModal ] =  useState<boolean>(false)
-const [openPrintModal,setOpenPrintModal ] =  useState<boolean>(false)
-
+  const [openLoaderModal, setOpenLoaderModal] = useState<boolean>(false);
+  const [openPrintModal, setOpenPrintModal] = useState<boolean>(false);
+  const [openPrintSlipModal, setOpenPrintSlipModal] = useState<boolean>(false);
 
   return (
     <>
-      {openLoaderModal ? (
-        <LoadingModal openLoaderModal={openLoaderModal} setOpenLoaderModal={setOpenLoaderModal} setOpenPrintModal={setOpenPrintModal}/>
-      ) : null}
-      {openPrintModal ? (
-        <PrintModal openPrintModal={openPrintModal} setOpenPrintModal={setOpenPrintModal} />
-      ) : null}
+      {openLoaderModal && (
+        <LoadingModal
+          openLoaderModal={openLoaderModal}
+          setOpenLoaderModal={setOpenLoaderModal}
+          setOpenPrintModal={setOpenPrintModal}
+        />
+      )}
+      {openPrintModal && (
+        <PrintModal
+          openPrintModal={openPrintModal}
+          setOpenPrintModal={setOpenPrintModal}
+          setOpenPrintSlipModal={setOpenPrintSlipModal}
+        />
+      )}
+      {openPrintSlipModal && (
+        <PrintSlipModal
+          openPrintSlipModal={openPrintSlipModal}
+          setOpenPrintSlipModal={setOpenPrintSlipModal}
+          setOpenPrintModal={setOpenPrintModal}
+        />
+      )}
       <div className={`flex flex-col items-center `}>
         <div className="flex py-4 mx-auto w-[95%] justify-between ">
           {paymentCards.map((item) => (
@@ -140,8 +159,7 @@ const [openPrintModal,setOpenPrintModal ] =  useState<boolean>(false)
                 paddingVertical="py-6"
                 fontWeight="font-medium"
                 onClick={() => {
-                  setOpenLoaderModal(true), 
-                  setOpenPrintModal(false)
+                  setOpenLoaderModal(true), setOpenPrintModal(false);
                 }}
               />
               <CustomButton
@@ -162,7 +180,11 @@ const [openPrintModal,setOpenPrintModal ] =  useState<boolean>(false)
         </div>
         {isCartOpen && (
           <div className="absolute z-10 bottom-0 top-0 min-[769px]:hidden max-[321px]:px-3 max-[321px]:py-2 max-[321px]:rounded-md">
-            <CartItems isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+            <CartItems
+              isCartOpen={isCartOpen}
+              setIsCartOpen={setIsCartOpen}
+              setSelectedItemsTab={setSelectedItemsTab}
+            />
           </div>
         )}
       </div>

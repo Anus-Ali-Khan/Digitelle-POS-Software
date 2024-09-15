@@ -74,7 +74,11 @@ const FoodItems: FC<FoodItemProps> = ({
 
       {isCartOpen && (
         <div className="absolute z-10 bottom-0 top-0 min-[769px]:hidden max-[321px]:px-3 max-[321px]:py-2 max-[321px]:rounded-md">
-          <CartItems isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+          <CartItems
+            isCartOpen={isCartOpen}
+            setIsCartOpen={setIsCartOpen}
+            setSelectedItemsTab={setSelectedItemsTab}
+          />
         </div>
       )}
     </div>

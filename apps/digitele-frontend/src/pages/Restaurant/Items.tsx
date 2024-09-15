@@ -4,14 +4,16 @@ import CartItems from '../../components/Restaurant/CartItems';
 import FoodItems from '../../components/Restaurant/FoodItems';
 import AddItems from '../../components/Restaurant/AddItems';
 import AddCategories from '../../components/Restaurant/AddCategories';
+import PayNow from '../../components/Restaurant/PayNow';
 
 export enum ItemsTabs {
   Items = 'Items',
   AddItem = 'AddItem',
   AddCategories = 'AddCategories',
+  PayNow = 'PayNow',
 }
 
-const Orders = () => {
+const Items = () => {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [selectedItemsTab, setSelectedItemsTab] = useState<ItemsTabs>(
     ItemsTabs.Items
@@ -30,16 +32,22 @@ const Orders = () => {
             <BottomTab />
           </div>
           <div className="basis-[30%] max-[769px]:hidden ">
-            <CartItems isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+            <CartItems
+              isCartOpen={isCartOpen}
+              setIsCartOpen={setIsCartOpen}
+              setSelectedItemsTab={setSelectedItemsTab}
+            />
           </div>
         </div>
+      ) : selectedItemsTab === ItemsTabs.PayNow ? (
+        <PayNow setSelectedItemsTab={setSelectedItemsTab} />
       ) : selectedItemsTab === ItemsTabs.AddItem ? (
         <AddItems setSelectedItemsTab={setSelectedItemsTab} />
       ) : (
-        <AddCategories  setSelectedItemsTab={setSelectedItemsTab} />
+        <AddCategories setSelectedItemsTab={setSelectedItemsTab} />
       )}
     </div>
   );
 };
 
-export default Orders;
+export default Items;
