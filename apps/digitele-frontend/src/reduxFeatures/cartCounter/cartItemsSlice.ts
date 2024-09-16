@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type CartItemType = {
+export type CartItemType = {
   id: number;
   name: string;
   price: string;
@@ -31,11 +31,23 @@ export const cartItemSlice = createSlice({
             return item;
           }
         });
+      } else {
+        state.cartItems.push(action.payload);
+      }
+    },
+    removeCartItem: (state, action: PayloadAction<CartItemType>) => {
+      const foundedItem = state.cartItems.find(
+        (item) => item.id === action.payload.id
+      );
+      if (foundedItem) {
+        state.cartItems = state.cartItems.filter((item) => {
+          return item.id !== foundedItem.id;
+        });
       }
     },
   },
 });
 
-// check the item existance in array (done)
-// if present increase quantity
-// not present so add it in array
+export const { addCartItem, removeCartItem } = cartItemSlice.actions;
+
+export default cartItemSlice.reducer;

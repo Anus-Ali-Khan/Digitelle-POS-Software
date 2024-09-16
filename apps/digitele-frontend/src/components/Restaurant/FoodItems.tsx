@@ -2,21 +2,31 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { foodItemsList } from '../../utils/constants';
 import CustomButton from './CustomButton';
 import { FaPlus } from 'react-icons/fa6';
-import { FC } from 'react';
+import { Dispatch, FC } from 'react';
 import CartItems from './CartItems';
 import { ItemsTabs } from '../../pages/Restaurant/Items';
+import { UnknownAction } from '@reduxjs/toolkit';
+import { addCartItem } from '../../reduxFeatures/cartCounter/cartItemsSlice';
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
 
 type FoodItemProps = {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
+  dispatch: Dispatch<UnknownAction>;
 };
 
 const FoodItems: FC<FoodItemProps> = ({
   isCartOpen,
   setIsCartOpen,
   setSelectedItemsTab,
+  dispatch,
 }: FoodItemProps) => {
+  const cartItemsData = useSelector(
+    (state: RootState) => state.cartItem.cartItems
+  );
+
   return (
     <div className="bg-gray h-[calc(100vh-(96px+75px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative">
       <p className="text-Primary font-poppins font-[700] text-[36px] mt-6">
@@ -32,13 +42,16 @@ const FoodItems: FC<FoodItemProps> = ({
             <div className="h-[200px] w-[200px] bg-black rounded-md opacity-20 max-[426px]:w-[300px] max-[321px]:w-[250px]"></div>
             <div className="p-4 absolute">
               <p className="font-poppins font-[700] text-[16px] text-[#FFFFFF]">
-                {item.title}
+                {item.name}
               </p>
               <p className="font-[400] font-poppins text-[14px] text-[#FFFFFF]">
                 {item.price}
               </p>
             </div>
-            <div className="absolute bottom-2 right-2 bg-Secondary rounded-full p-2 cursor-pointer">
+            <div
+              className="absolute bottom-2 right-2 bg-Secondary rounded-full p-2 cursor-pointer"
+              onClick={() => dispatch(addCartItem(item))}
+            >
               <FaPlus size={20} />
             </div>
           </div>
@@ -78,6 +91,7 @@ const FoodItems: FC<FoodItemProps> = ({
             isCartOpen={isCartOpen}
             setIsCartOpen={setIsCartOpen}
             setSelectedItemsTab={setSelectedItemsTab}
+            cartItemsData={cartItemsData}
           />
         </div>
       )}

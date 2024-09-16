@@ -56,82 +56,95 @@ export const navLinks: navLinksTypes[] = [
 
 type foodItemsTypes = {
   id: number;
-  title: string;
+  name: string;
   price: string;
-  img: string;
+  quantity: number;
+  img?: string;
 };
 
 export const foodItemsList: foodItemsTypes[] = [
   {
     id: 1,
-    title: 'Zinger Burger',
+    name: 'Zinger Burger',
     price: '$30',
+    quantity:1,
     img: Burger,
   },
   {
     id: 2,
-    title: 'Smashed Avo',
+    name: 'Smashed Avo',
     price: '$30',
+    quantity:1,
     img: Avo,
   },
   {
     id: 3,
-    title: 'Huevos Rancheros',
+    name: 'Huevos Rancheros',
     price: '$10',
+    quantity:1,
     img: Rancheros,
   },
   {
     id: 4,
-    title: 'Zinger Burger',
+    name: 'Zinger Burger',
     price: '$30',
+    quantity:1,
     img: Burger,
   },
   {
     id: 5,
-    title: 'Smashed Avo',
+    name: 'Smashed Avo',
     price: '$30',
+    quantity:1,
     img: Avo,
   },
   {
     id: 6,
-    title: 'Huevos Rancheros',
+    name: 'Huevos Rancheros',
     price: '$10',
+    quantity:1,
     img: Rancheros,
   },
   {
     id: 7,
-    title: 'Zinger Burger',
+    name: 'Zinger Burger',
     price: '$30',
+    quantity:1,
     img: Burger,
   },
   {
     id: 8,
-    title: 'Smashed Avo',
+    name: 'Smashed Avo',
     price: '$30',
+    quantity:1,
     img: Avo,
   },
   {
     id: 9,
-    title: 'Huevos Rancheros',
+    name: 'Huevos Rancheros',
     price: '$10',
+    quantity:1,
     img: Rancheros,
   },
   {
     id: 10,
-    title: 'Zinger Burger',
+    name: 'Zinger Burger',
     price: '$30',
+    quantity:1,
     img: Burger,
   },
   {
     id: 11,
-    title: 'Smashed Avo',
+    name: 'Smashed Avo',
     price: '$30',
+    quantity:1,
     img: Avo,
   },
   {
     id: 12,
-    title: 'Huevos Rancheros',
+    name: 'Huevos Rancheros',
     price: '$10',
+    quantity:1,
     img: Rancheros,
   },
 ];

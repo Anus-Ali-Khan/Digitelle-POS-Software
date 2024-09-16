@@ -9,29 +9,37 @@ import Coupon from '../../assets/images/coupon.svg';
 import Discount from '../../assets/images/discount.svg';
 import Hold from '../../assets/images/hold.svg';
 import { ItemsTabs } from '../../pages/Restaurant/Items';
-import { cartItems } from '../../utils/constants';
+// import { cartItems } from '../../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   decrement,
   increment,
-} from '../../reduxFeatures/cartCounter/CartCounterSlice';
+} from '../../reduxFeatures/cartCounter/cartCounterSlice';
 import { RootState } from '../../redux/store';
 import { useState } from 'react';
+import {
+  CartItemType,
+  removeCartItem,
+} from '../../reduxFeatures/cartCounter/cartItemsSlice';
 
 type CartItemProps = {
   isCartOpen?: boolean;
   setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
+  cartItemsData: CartItemType[];
 };
 
 const CartItems = ({
   isCartOpen,
   setIsCartOpen,
   setSelectedItemsTab,
+  cartItemsData,
 }: CartItemProps) => {
   const [selectedItem, setSelectedItem] = useState<number>(0);
   const addItemCount = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
+
+  console.log(cartItemsData);
 
   return (
     <div
@@ -55,7 +63,7 @@ const CartItems = ({
           <img src={Divider} alt="divider" />
         </div>
         <div className="flex flex-col  ">
-          {cartItems.map((item, index) => (
+          {cartItemsData.map((item, index) => (
             <div
               key={index}
               className="flex justify-around mt-6 items-center gap-6 max-[1025px]:gap-4 max-[1025px]:px-2"
@@ -65,7 +73,7 @@ const CartItems = ({
                   {item.name}
                 </p>
                 <CustomButton
-                  title={item.foodType}
+                  title="Fast Food"
                   fontSize="text-[10px]"
                   fontWeight="font-[500]"
                   borderRadius="full"
@@ -86,23 +94,28 @@ const CartItems = ({
                   <div
                     className="  bg-Primary rounded-full p-1 cursor-pointer"
                     onClick={() => {
-                      dispatch(increment()), setSelectedItem(item.id);
+                      dispatch(increment());
+                      setSelectedItem(item.id);
                     }}
                   >
                     <FaPlus size={10} className="text-white" />
                   </div>
                   <p className="font-poppins font-[400] text-[22px] text-[#AEADAD] border rounded-sm px-4 py-2">
-                    {item.id === selectedItem ? addItemCount : 0}
+                    {item.id === selectedItem ? item.quantity + addItemCount : item.quantity}
                   </p>
                   <div
                     className="bg-[#FF0000] rounded-full cursor-pointer"
                     onClick={() => {
-                      dispatch(decrement()), setSelectedItem(item.id);
+                      dispatch(decrement());
+                      setSelectedItem(item.id);
                     }}
                   >
                     <BsDash size={16} className="text-white  " />
                   </div>
-                  <div className="bg-[#FF0000] rounded-full p-1 cursor-pointer ">
+                  <div
+                    className="bg-[#FF0000] rounded-full p-1 cursor-pointer "
+                    onClick={() => dispatch(removeCartItem(item))}
+                  >
                     <RxCross2 size={16} className="text-white" />
                   </div>
                 </div>
