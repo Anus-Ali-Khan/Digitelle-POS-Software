@@ -38,7 +38,7 @@ const FoodItems: FC<FoodItemProps> = ({
                 {item.price}
               </p>
             </div>
-            <div className="absolute bottom-2 right-2 bg-Secondary rounded-full p-2">
+            <div className="absolute bottom-2 right-2 bg-Secondary rounded-full p-2 cursor-pointer">
               <FaPlus size={20} />
             </div>
           </div>

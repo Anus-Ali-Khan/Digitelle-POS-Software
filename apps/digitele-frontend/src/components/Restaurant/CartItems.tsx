@@ -2,7 +2,6 @@ import { FaPlus } from 'react-icons/fa6';
 import CustomButton from './CustomButton';
 import { BsDash } from 'react-icons/bs';
 import { RxCross2 } from 'react-icons/rx';
-import { useNavigate } from 'react-router';
 import Cart from '../../assets/images/cart.svg';
 import Divider from '../../assets/images/divider.png';
 import Ticket from '../../assets/images/ticket.svg';
@@ -10,6 +9,14 @@ import Coupon from '../../assets/images/coupon.svg';
 import Discount from '../../assets/images/discount.svg';
 import Hold from '../../assets/images/hold.svg';
 import { ItemsTabs } from '../../pages/Restaurant/Items';
+import { cartItems } from '../../utils/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  decrement,
+  increment,
+} from '../../reduxFeatures/cartCounter/CartCounterSlice';
+import { RootState } from '../../redux/store';
+import { useState } from 'react';
 
 type CartItemProps = {
   isCartOpen?: boolean;
@@ -22,6 +29,10 @@ const CartItems = ({
   setIsCartOpen,
   setSelectedItemsTab,
 }: CartItemProps) => {
+  const [selectedItem, setSelectedItem] = useState<number>(0);
+  const addItemCount = useSelector((state: RootState) => state.counter.value);
+  const dispatch = useDispatch();
+
   return (
     <div
       className={`flex flex-col justify-between h-full bg-white max-[321px]:rounded-md  `}
@@ -44,111 +55,60 @@ const CartItems = ({
           <img src={Divider} alt="divider" />
         </div>
         <div className="flex flex-col  ">
-          <div className="flex justify-around mt-6 items-center gap-6max-[1025px]:gap-4 max-[1025px]:px-2">
-            <div className="flex flex-col justify-center">
-              <p className="font-poppins text-Primary text-[16px] font-[400]">
-                Beaf Steak
-              </p>
-              <CustomButton
-                title="Fast Food"
-                fontSize="text-[10px]"
-                fontWeight="font-[500]"
-                borderRadius="full"
-                paddingHorizontal="px-1"
-                paddingVertical="py-1"
-              />
-            </div>
-            <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
-              <div className="flex items-center gap-1">
-                <img src={Ticket} alt="ticket" className="h-[17px] w-[17px]" />
-                <p>$10</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="  bg-Primary rounded-full p-1 ">
-                  <FaPlus size={10} className="text-white" />
-                </div>
-                <p className="font-poppins font-[400] text-[22px] text-[#AEADAD] border rounded-sm px-4 py-2">
-                  1
+          {cartItems.map((item, index) => (
+            <div
+              key={index}
+              className="flex justify-around mt-6 items-center gap-6 max-[1025px]:gap-4 max-[1025px]:px-2"
+            >
+              <div className="flex flex-col justify-center">
+                <p className="font-poppins text-Primary text-[16px] font-[400]">
+                  {item.name}
                 </p>
-                <div className="bg-[#FF0000] rounded-full">
-                  <BsDash size={16} className="text-white  " />
+                <CustomButton
+                  title={item.foodType}
+                  fontSize="text-[10px]"
+                  fontWeight="font-[500]"
+                  borderRadius="full"
+                  paddingHorizontal="px-1"
+                  paddingVertical="py-1"
+                />
+              </div>
+              <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
+                <div className="flex items-center gap-1">
+                  <img
+                    src={Ticket}
+                    alt="ticket"
+                    className="h-[17px] w-[17px]"
+                  />
+                  <p>{item.price}</p>
                 </div>
-                <div className="bg-[#FF0000] rounded-full p-1 ">
-                  <RxCross2 size={16} className="text-white" />
+                <div className="flex items-center gap-2">
+                  <div
+                    className="  bg-Primary rounded-full p-1 cursor-pointer"
+                    onClick={() => {
+                      dispatch(increment()), setSelectedItem(item.id);
+                    }}
+                  >
+                    <FaPlus size={10} className="text-white" />
+                  </div>
+                  <p className="font-poppins font-[400] text-[22px] text-[#AEADAD] border rounded-sm px-4 py-2">
+                    {item.id === selectedItem ? addItemCount : 0}
+                  </p>
+                  <div
+                    className="bg-[#FF0000] rounded-full cursor-pointer"
+                    onClick={() => {
+                      dispatch(decrement()), setSelectedItem(item.id);
+                    }}
+                  >
+                    <BsDash size={16} className="text-white  " />
+                  </div>
+                  <div className="bg-[#FF0000] rounded-full p-1 cursor-pointer ">
+                    <RxCross2 size={16} className="text-white" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex justify-around mt-6 items-center gap-6 max-[1025px]:gap-4 max-[1025px]:px-2">
-            <div className="flex flex-col justify-center">
-              <p className="font-poppins text-Primary text-[16px] font-[400]">
-                Beaf Steak
-              </p>
-              <CustomButton
-                title="Fast Food"
-                fontSize="text-[10px]"
-                fontWeight="font-[500]"
-                borderRadius="full"
-                paddingHorizontal="px-1"
-                paddingVertical="py-1"
-              />
-            </div>
-            <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
-              <div className="flex items-center gap-1">
-                <img src={Ticket} alt="ticket" className="h-[17px] w-[17px]" />
-                <p>$10</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="  bg-Primary rounded-full p-1 ">
-                  <FaPlus size={10} className="text-white" />
-                </div>
-                <p className="font-poppins font-[400] text-[22px] text-[#AEADAD] border rounded-sm px-4 py-2">
-                  1
-                </p>
-                <div className="bg-[#FF0000] rounded-full">
-                  <BsDash size={16} className="text-white  " />
-                </div>
-                <div className="bg-[#FF0000] rounded-full p-1 ">
-                  <RxCross2 size={16} className="text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-around mt-6 items-center gap-6 max-[1025px]:gap-4 max-[1025px]:px-2">
-            <div className="flex flex-col justify-center">
-              <p className="font-poppins text-Primary text-[16px] font-[400]">
-                Beaf Steak
-              </p>
-              <CustomButton
-                title="Fast Food"
-                fontSize="text-[10px]"
-                fontWeight="font-[500]"
-                borderRadius="full"
-                paddingHorizontal="px-1"
-                paddingVertical="py-1"
-              />
-            </div>
-            <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
-              <div className="flex items-center gap-1">
-                <img src={Ticket} alt="ticket" className="h-[17px] w-[17px]" />
-                <p>$10</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="  bg-Primary rounded-full p-1 ">
-                  <FaPlus size={10} className="text-white" />
-                </div>
-                <p className="font-poppins font-[400] text-[22px] text-[#AEADAD] border rounded-sm px-4 py-2">
-                  1
-                </p>
-                <div className="bg-[#FF0000] rounded-full">
-                  <BsDash size={16} className="text-white  " />
-                </div>
-                <div className="bg-[#FF0000] rounded-full p-1 ">
-                  <RxCross2 size={16} className="text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -187,13 +147,13 @@ const CartItems = ({
             </p>
           </div>
           <div className="flex mt-6 justify-between">
-            <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-6 py-3 gap-1 max-[1025px]:px-2 ">
+            <div className="flex flex-col cursor-pointer border border-[#AEADAD] rounded-md items-center px-6 py-3 gap-1 max-[1025px]:px-2 ">
               <img src={Coupon} alt="coupon" className="h-[26px] w-[26px]" />
               <p className="font-poppins text-[14px] text-Primary font-[400]">
                 Coupon
               </p>
             </div>
-            <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-6 py-3 gap-1 max-[1025px]:px-2 ">
+            <div className="flex flex-col cursor-pointer border border-[#AEADAD] rounded-md items-center px-6 py-3 gap-1 max-[1025px]:px-2 ">
               <img
                 src={Discount}
                 alt="discount"
@@ -203,7 +163,7 @@ const CartItems = ({
                 Discount
               </p>
             </div>
-            <div className="flex flex-col border border-[#AEADAD] rounded-md items-center px-4 py-3 gap-1 max-[1025px]:px-1 ">
+            <div className="flex flex-col cursor-pointer border border-[#AEADAD] rounded-md items-center px-4 py-3 gap-1 max-[1025px]:px-1 ">
               <img src={Hold} alt="hold" className="h-[26px] w-[26px]" />
               <p className="font-poppins text-[14px] text-Primary font-[400]">
                 Hold Order

@@ -305,82 +305,110 @@ export const stockList: StockListTypes[] = [
 ];
 
 type OrdersListTypes = {
-  orderNo:number,
-  datenTime:string,
-  customerName:string,
-  totalPrice:number,
-  cartItems:number
-}
+  orderNo: number;
+  datenTime: string;
+  customerName: string;
+  totalPrice: number;
+  cartItems: number;
+};
 
-export const OrdersList:OrdersListTypes[] = [
+export const OrdersList: OrdersListTypes[] = [
   {
-    orderNo:405,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 405,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:406,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 406,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:407,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 407,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:408,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 408,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:409,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 409,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:410,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 410,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:411,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 411,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:412,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 412,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:413,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
+    orderNo: 413,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
   },
   {
-    orderNo:414,
-    datenTime:'July 2,2024 6:53pm',
-    customerName:'David Paul',
-    totalPrice:440.00,
-    cartItems:3
-  }
-]
+    orderNo: 414,
+    datenTime: 'July 2,2024 6:53pm',
+    customerName: 'David Paul',
+    totalPrice: 440.0,
+    cartItems: 3,
+  },
+];
+
+type CartItemsTypes = {
+  id: number;
+  name: string;
+  foodType: string;
+  price: string;
+};
+
+export const cartItems: CartItemsTypes[] = [
+  {
+    id: 1,
+    name: 'Beaf Steak',
+    foodType: 'Fast Food',
+    price: '10',
+  },
+  {
+    id: 2,
+    name: 'Beaf Steak',
+    foodType: 'Fast Food',
+    price: '10',
+  },
+  {
+    id: 3,
+    name: 'Beaf Steak',
+    foodType: 'Fast Food',
+    price: '10',
+  },
+];
