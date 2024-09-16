@@ -9,37 +9,29 @@ import Coupon from '../../assets/images/coupon.svg';
 import Discount from '../../assets/images/discount.svg';
 import Hold from '../../assets/images/hold.svg';
 import { ItemsTabs } from '../../pages/Restaurant/Items';
-// import { cartItems } from '../../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  addCartItem,
   decrement,
-  increment,
-} from '../../reduxFeatures/cartCounter/cartCounterSlice';
-import { RootState } from '../../redux/store';
-import { useState } from 'react';
-import {
-  CartItemType,
   removeCartItem,
 } from '../../reduxFeatures/cartCounter/cartItemsSlice';
+import { RootState } from '../../redux/store';
 
 type CartItemProps = {
   isCartOpen?: boolean;
   setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
-  cartItemsData: CartItemType[];
 };
 
 const CartItems = ({
   isCartOpen,
   setIsCartOpen,
   setSelectedItemsTab,
-  cartItemsData,
 }: CartItemProps) => {
-  const [selectedItem, setSelectedItem] = useState<number>(0);
-  const addItemCount = useSelector((state: RootState) => state.counter.value);
+  const cartItemsData = useSelector(
+    (state: RootState) => state.cartItem.cartItems
+  );
   const dispatch = useDispatch();
-
-  console.log(cartItemsData);
 
   return (
     <div
@@ -94,20 +86,18 @@ const CartItems = ({
                   <div
                     className="  bg-Primary rounded-full p-1 cursor-pointer"
                     onClick={() => {
-                      dispatch(increment());
-                      setSelectedItem(item.id);
+                      dispatch(addCartItem(item));
                     }}
                   >
                     <FaPlus size={10} className="text-white" />
                   </div>
                   <p className="font-poppins font-[400] text-[22px] text-[#AEADAD] border rounded-sm px-4 py-2">
-                    {item.id === selectedItem ? item.quantity + addItemCount : item.quantity}
+                    {item.quantity}
                   </p>
                   <div
                     className="bg-[#FF0000] rounded-full cursor-pointer"
                     onClick={() => {
-                      dispatch(decrement());
-                      setSelectedItem(item.id);
+                      dispatch(decrement(item));
                     }}
                   >
                     <BsDash size={16} className="text-white  " />

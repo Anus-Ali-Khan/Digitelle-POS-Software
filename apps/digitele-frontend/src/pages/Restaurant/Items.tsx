@@ -5,8 +5,6 @@ import FoodItems from '../../components/Restaurant/FoodItems';
 import AddItems from '../../components/Restaurant/AddItems';
 import AddCategories from '../../components/Restaurant/AddCategories';
 import PayNow from '../../components/Restaurant/PayNow';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../redux/store';
 
 export enum ItemsTabs {
   Items = 'Items',
@@ -21,9 +19,6 @@ const Items = () => {
     ItemsTabs.Items
   );
 
-  const cartItemsData = useSelector((state: RootState) => state.cartItem.cartItems);
-  const dispatch = useDispatch();
-
   return (
     <div>
       {selectedItemsTab === ItemsTabs.Items ? (
@@ -33,7 +28,6 @@ const Items = () => {
               setIsCartOpen={setIsCartOpen}
               isCartOpen={isCartOpen}
               setSelectedItemsTab={setSelectedItemsTab}
-              dispatch={dispatch}
             />
             <BottomTab />
           </div>
@@ -42,7 +36,6 @@ const Items = () => {
               isCartOpen={isCartOpen}
               setIsCartOpen={setIsCartOpen}
               setSelectedItemsTab={setSelectedItemsTab}
-              cartItemsData={cartItemsData}
             />
           </div>
         </div>

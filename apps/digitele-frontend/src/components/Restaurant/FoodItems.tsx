@@ -2,30 +2,32 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { foodItemsList } from '../../utils/constants';
 import CustomButton from './CustomButton';
 import { FaPlus } from 'react-icons/fa6';
-import { Dispatch, FC } from 'react';
+import { FC } from 'react';
 import CartItems from './CartItems';
 import { ItemsTabs } from '../../pages/Restaurant/Items';
-import { UnknownAction } from '@reduxjs/toolkit';
 import { addCartItem } from '../../reduxFeatures/cartCounter/cartItemsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { useSelector } from 'react-redux';
 
 type FoodItemProps = {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedItemsTab: React.Dispatch<React.SetStateAction<ItemsTabs>>;
-  dispatch: Dispatch<UnknownAction>;
 };
 
 const FoodItems: FC<FoodItemProps> = ({
   isCartOpen,
   setIsCartOpen,
   setSelectedItemsTab,
-  dispatch,
 }: FoodItemProps) => {
   const cartItemsData = useSelector(
     (state: RootState) => state.cartItem.cartItems
   );
+  const dispatch = useDispatch();
+  let totalCartItems = 0;
+  cartItemsData.forEach((item) => {
+    return (totalCartItems += item.quantity);
+  });
 
   return (
     <div className="bg-gray h-[calc(100vh-(96px+75px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative">
@@ -78,6 +80,9 @@ const FoodItems: FC<FoodItemProps> = ({
           onClick={() => setSelectedItemsTab(ItemsTabs.AddCategories)}
         />
       </div>
+      <div className="bg-red-500 min-[769px]:hidden text-white rounded-full absolute right-6 bottom-10 z-10 px-2 max-[426px]:right-1">
+        <p>{totalCartItems}</p>
+      </div>
       <div className="min-[769px]:hidden absolute right-8 bottom-3 bg-white rounded-full p-3 hover:text-white hover:bg-Primary max-[426px]:right-2">
         <MdOutlineShoppingCart
           size={30}
@@ -91,7 +96,6 @@ const FoodItems: FC<FoodItemProps> = ({
             isCartOpen={isCartOpen}
             setIsCartOpen={setIsCartOpen}
             setSelectedItemsTab={setSelectedItemsTab}
-            cartItemsData={cartItemsData}
           />
         </div>
       )}

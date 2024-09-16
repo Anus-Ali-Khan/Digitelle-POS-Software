@@ -32,7 +32,10 @@ export const cartItemSlice = createSlice({
           }
         });
       } else {
-        state.cartItems.push(action.payload);
+        state.cartItems = [
+          ...state.cartItems,
+          { ...action.payload, quantity: 1 },
+        ];
       }
     },
     removeCartItem: (state, action: PayloadAction<CartItemType>) => {
@@ -45,9 +48,18 @@ export const cartItemSlice = createSlice({
         });
       }
     },
+    decrement: (state, action: PayloadAction<CartItemType>) => {
+      state.cartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          return { ...action.payload, quantity: action.payload.quantity - 1 };
+        } else {
+          return item;
+        }
+      });
+    },
   },
 });
 
-export const { addCartItem, removeCartItem } = cartItemSlice.actions;
+export const { addCartItem, removeCartItem, decrement } = cartItemSlice.actions;
 
 export default cartItemSlice.reducer;
