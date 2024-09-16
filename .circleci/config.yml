@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  deploy:
+    docker:
+      - image: arvindr226/alpine-ssh
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "glpat-vUYZWV_BAm-duT4Ef2xt"
+      - run: ssh -oStrictHostKeyChecking=no -v $USER@$DNS "./deploy.sh"
+
+workflows:
+  deploy-to-ec2:
+    jobs:
+      - deploy
