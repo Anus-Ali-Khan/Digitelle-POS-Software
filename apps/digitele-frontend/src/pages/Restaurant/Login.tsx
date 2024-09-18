@@ -1,18 +1,44 @@
-import { MdOutlineMail } from "react-icons/md";
-import CustomInput from "../../components/Restaurant/CustomInput";
-import { CiLock } from "react-icons/ci";
-import CustomButton from "../../components/Restaurant/CustomButton";
-import { IoChevronForward } from "react-icons/io5";
-import { useNavigate } from "react-router";
-import LoginFrame from '../../assets/images/LoginFrame.png'
-import Logo from '../../assets/images/Logo.png'
+import { MdOutlineMail } from 'react-icons/md';
+import CustomInput from '../../components/Restaurant/CustomInput';
+import { CiLock } from 'react-icons/ci';
+import CustomButton from '../../components/Restaurant/CustomButton';
+import { IoChevronForward } from 'react-icons/io5';
+import { useNavigate } from 'react-router';
+import LoginFrame from '../../assets/images/LoginFrame.png';
+import Logo from '../../assets/images/Logo.png';
+import { LoginSchema } from '../../schema/login.schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
+import { useLoginUserMutation } from '../../redux/Slices/auth.slice.';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loginMutation, { isLoading }] = useLoginUserMutation();
 
-  const handleNavigate = () => {
-    navigate("/welcome");
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginSchema>({ resolver: zodResolver(LoginSchema) });
+
+  const onSubmit = async (data: LoginSchema) => {
+    try {
+      const response = await loginMutation({
+        email: data.email,
+        password: data.password,
+      });
+      console.log(response);
+      if (response) {
+        navigate('/welcome');
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className=" bg-gradient-to-r from-[#02A0B9] to-[#043258] h-[100vh]">
@@ -22,26 +48,49 @@ const Login = () => {
         </div>
         <div className="basis-[40%]  max-[1024px]:basis-[50%] max-[426px]:basis-[100%] max-[321px]:basis-[100%] max-[596px]:basis-[80%]">
           <div className="bg-white h-fit rounded-lg flex flex-col  items-center">
-            <img
-              src={Logo}
-              className="max-[769px]:h-[120px] my-8"
-            />
+            <img src={Logo} className="max-[769px]:h-[120px] my-8" />
             <form className="w-full flex flex-col items-center gap-12">
               <p className="font-bold font-poppins text-[36px] leading-[54px] text-Primary">
                 Login
               </p>
-              <div className="w-full flex flex-col gap-5 items-center  ">
-                <CustomInput
-                  placeholder="Email"
-                  type="text"
-                  icon={<MdOutlineMail size={18} />}
-                  width="w-[70%]"
+              <div className="w-full flex flex-col gap-2 items-center  ">
+                <Controller
+                  control={control}
+                  name="email"
+                  rules={{
+                    required: true,
+                  }}
+                  render={({ field: { onChange, value } }) => (
+                    <CustomInput
+                      placeholder="Email"
+                      type="text"
+                      icon={<MdOutlineMail size={18} />}
+                      width="w-[70%]"
+                      onChange={onChange}
+                      value={value}
+                      name="email"
+                      errors={errors}
+                    />
+                  )}
                 />
-                <CustomInput
-                  placeholder="Password"
-                  type="password"
-                  icon={<CiLock size={18} />}
-                  width="w-[70%]"
+                <Controller
+                  control={control}
+                  name="password"
+                  rules={{
+                    required: true,
+                  }}
+                  render={({ field: { onChange, value } }) => (
+                    <CustomInput
+                      placeholder="Password"
+                      type="password"
+                      icon={<CiLock size={18} />}
+                      width="w-[70%]"
+                      onChange={onChange}
+                      value={value}
+                      name="password"
+                      errors={errors}
+                    />
+                  )}
                 />
               </div>
               <div className="flex items-center justify-between gap-4 mx-auto w-[70%] max-[321px]:w-[80%]">
@@ -49,7 +98,7 @@ const Login = () => {
                   title="Submit"
                   fontSize="text-[14px]"
                   fontWeight="font-[700]"
-                  onClick={handleNavigate}
+                  onClick={handleSubmit(onSubmit)}
                   borderRadius="full"
                   paddingHorizontal="px-8"
                   paddingVertical="py-4"
