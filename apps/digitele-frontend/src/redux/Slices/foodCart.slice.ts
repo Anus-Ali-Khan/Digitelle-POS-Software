@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getAllFoodsApiBody } from '../../types/apiSlices/foodCart';
 
 const retrievedStoreStr = localStorage.getItem('persist:cartItems');
 const parsevalue = JSON.parse(retrievedStoreStr ? retrievedStoreStr : '');

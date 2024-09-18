@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type CartItemType = {
-  id: number;
+  id: string;
   name: string;
-  price: string;
+  price: number;
   quantity: number;
 };
 
@@ -29,7 +29,7 @@ export const cartItemSlice = createSlice({
             return { ...foundedItem, quantity: foundedItem.quantity + 1 };
           } else {
             return item;
-          }    
+          }
         });
       } else {
         state.cartItems = [
