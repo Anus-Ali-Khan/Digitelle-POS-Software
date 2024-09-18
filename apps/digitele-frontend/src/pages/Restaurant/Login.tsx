@@ -11,7 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { useLoginUserMutation } from '../../redux/Slices/auth.slice.';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../reduxFeatures/reducers/users.slice';
+import { setToken, setUser } from '../../reduxFeatures/reducers/users.slice';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,7 +32,8 @@ const Login = () => {
       });
       console.log(response.data.data);
       if (response.data) {
-        dispatch(setUser(response.data.data));
+        dispatch(setUser(response.data.data.user));
+        dispatch(setToken(response.data.data.token));
         navigate('/welcome', { replace: false });
       }
     } catch (err) {

@@ -3,7 +3,7 @@ import cartItemReducer from '../reduxFeatures/reducers/cartItemsSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { authApi } from './Slices/auth.slice.';
-import setUserReducer from '../reduxFeatures/reducers/users.slice';
+import userReducer from '../reduxFeatures/reducers/users.slice';
 import { foodApi } from './Slices/foodCart.slice';
 
 const persistConfig = {
@@ -13,7 +13,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   cartItem: cartItemReducer,
-  setUser: setUserReducer,
+  userReducer: userReducer,
   [authApi.reducerPath]: authApi.reducer,
   [foodApi.reducerPath]: foodApi.reducer,
 });

@@ -9,6 +9,7 @@ import { addCartItem } from '../../reduxFeatures/reducers/cartItemsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useGetAllFoodsQuery } from '../../redux/Slices/foodCart.slice';
+import { getAllFoodsApiBody } from '../../types/apiSlices/foodCart';
 
 type FoodItemProps = {
   isCartOpen: boolean;
@@ -30,8 +31,8 @@ const FoodItems: FC<FoodItemProps> = ({
     return (totalCartItems += item.quantity);
   });
 
-  const { data, isLoading } = useGetAllFoodsQuery('');
-  console.log(data);
+  const { data: foodItems, isLoading } = useGetAllFoodsQuery('');
+  console.log(foodItems.data);
 
   if (isLoading) {
     return <h1>Loading....</h1>;
@@ -43,7 +44,7 @@ const FoodItems: FC<FoodItemProps> = ({
         Food Items
       </p>
       <div className="flex flex-wrap px-4 justify-around gap-4 mt-2 overflow-y-auto">
-        {foodItemsList.map((item) => (
+        {foodItems?.data?.map((item: getAllFoodsApiBody) => (
           <div
             key={item.id}
             style={{ backgroundImage: `url(${item.img})` }}

@@ -33,7 +33,6 @@ const CustomInput = ({
   name,
   errors,
 }: PropsType) => {
-  console.log(errors);
   return (
     <>
       <div
