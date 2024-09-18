@@ -10,9 +10,12 @@ import { LoginSchema } from '../../schema/login.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { useLoginUserMutation } from '../../redux/Slices/auth.slice.';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../reduxFeatures/reducers/users.slice';
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [loginMutation, { isLoading }] = useLoginUserMutation();
 
   const {
@@ -27,9 +30,10 @@ const Login = () => {
         email: data.email,
         password: data.password,
       });
-      console.log(response);
-      if (response) {
-        navigate('/welcome');
+      console.log(response.data.data);
+      if (response.data) {
+        dispatch(setUser(response.data.data));
+        navigate('/welcome', { replace: false });
       }
     } catch (err) {
       console.error(err);

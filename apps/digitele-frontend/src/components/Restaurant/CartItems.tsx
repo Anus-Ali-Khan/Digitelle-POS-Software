@@ -14,7 +14,7 @@ import {
   addCartItem,
   decrement,
   removeCartItem,
-} from '../../reduxFeatures/cartCounter/cartItemsSlice';
+} from '../../reduxFeatures/reducers/cartItemsSlice';
 import { RootState } from '../../redux/store';
 
 type CartItemProps = {
@@ -80,7 +80,7 @@ const CartItems = ({
                     alt="ticket"
                     className="h-[17px] w-[17px]"
                   />
-                  <p>{item.price}</p>
+                  <p>${parseInt(item.price) * item.quantity}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <div
@@ -100,7 +100,7 @@ const CartItems = ({
                       dispatch(decrement(item));
                     }}
                   >
-                    <BsDash size={16} className="text-white  " />
+                    <BsDash size={16} className="text-white" />
                   </div>
                   <div
                     className="bg-[#FF0000] rounded-full p-1 cursor-pointer "

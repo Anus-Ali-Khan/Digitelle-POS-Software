@@ -5,9 +5,10 @@ import { FaPlus } from 'react-icons/fa6';
 import { FC } from 'react';
 import CartItems from './CartItems';
 import { ItemsTabs } from '../../pages/Restaurant/Items';
-import { addCartItem } from '../../reduxFeatures/cartCounter/cartItemsSlice';
+import { addCartItem } from '../../reduxFeatures/reducers/cartItemsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { useGetAllFoodsQuery } from '../../redux/Slices/foodCart.slice';
 
 type FoodItemProps = {
   isCartOpen: boolean;
@@ -28,6 +29,13 @@ const FoodItems: FC<FoodItemProps> = ({
   cartItemsData.forEach((item) => {
     return (totalCartItems += item.quantity);
   });
+
+  const { data, isLoading } = useGetAllFoodsQuery('');
+  console.log(data);
+
+  if (isLoading) {
+    return <h1>Loading....</h1>;
+  }
 
   return (
     <div className="bg-gray h-[calc(100vh-(96px+75px))] flex flex-col items-center max-[769px]:h-[calc(100vh-(64px+60px))] relative">
