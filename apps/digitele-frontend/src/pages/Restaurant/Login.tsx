@@ -30,7 +30,7 @@ const Login = () => {
         email: data.email,
         password: data.password,
       });
-      console.log(response.data.data);
+      // console.log(response.data.data);
       if (response.data) {
         dispatch(setUser(response.data.data.user));
         dispatch(setToken(response.data.data.token));

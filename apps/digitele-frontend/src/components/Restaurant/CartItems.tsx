@@ -28,10 +28,11 @@ const CartItems = ({
   setIsCartOpen,
   setSelectedItemsTab,
 }: CartItemProps) => {
-  const cartItemsData = useSelector(
-    (state: RootState) => state.cartItem.cartItems
-  );
+  const cartItems = useSelector((state: RootState) => state.cartItem.cartItems);
   const dispatch = useDispatch();
+
+  let subTotals: number = 0;
+  cartItems.forEach((item) => (subTotals += item.price * item.quantity));
 
   return (
     <div
@@ -55,13 +56,13 @@ const CartItems = ({
           <img src={Divider} alt="divider" />
         </div>
         <div className="flex flex-col  ">
-          {cartItemsData.map((item, index) => (
+          {cartItems.map((item, index) => (
             <div
               key={index}
-              className="flex justify-around mt-6 items-center gap-6 max-[1025px]:gap-4 max-[1025px]:px-2"
+              className="flex justify-between mt-6 items-center gap-6 min-[1025px]:px-4 max-[1025px]:gap-4 max-[1025px]:px-4 max-[769px]:px-4"
             >
-              <div className="flex flex-col justify-center">
-                <p className="font-poppins text-Primary text-[16px] font-[400]">
+              <div className="flex flex-col justify-center ">
+                <p className="font-poppins text-Primary text-[16px] font-[400] text-left">
                   {item.name}
                 </p>
                 <CustomButton
@@ -69,8 +70,9 @@ const CartItems = ({
                   fontSize="text-[10px]"
                   fontWeight="font-[500]"
                   borderRadius="full"
-                  paddingHorizontal="px-1"
+                  paddingHorizontal="px-2"
                   paddingVertical="py-1"
+                  className="w-fit"
                 />
               </div>
               <div className="flex items-center justify-center gap-6 max-[1025px]:gap-2">
@@ -80,7 +82,7 @@ const CartItems = ({
                     alt="ticket"
                     className="h-[17px] w-[17px]"
                   />
-                  <p>${parseInt(item.price) * item.quantity}</p>
+                  <p>${item.price * item.quantity}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <div
@@ -122,7 +124,7 @@ const CartItems = ({
               Subtotal
             </p>
             <p className="font-[400] font-poppins text-[14px] text-Primary">
-              $20
+              {subTotals}
             </p>
           </div>
           <div className="flex justify-between items-center">
@@ -183,7 +185,7 @@ const CartItems = ({
               Pay Now
             </p>
             <p className="font-poppins font-[600] text-[22px] text-white">
-              $20
+              {subTotals}
             </p>
           </div>
         </div>

@@ -1,8 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { itemsApiBody } from '../../types/apiSlices/item';
 
 const retrievedStoreStr = localStorage.getItem('persist:cartItems');
-const parsevalue = JSON.parse(retrievedStoreStr ? retrievedStoreStr : '');
-const token = JSON.parse(parsevalue.userReducer).token;
+const parsevalue = JSON.parse(retrievedStoreStr ? retrievedStoreStr : '{}');
+const token = JSON.parse(
+  parsevalue?.userReducer ? parsevalue?.userReducer : '{}'
+)?.token;
 // console.log(token);
 
 export const foodApi = createApi({
@@ -13,14 +16,29 @@ export const foodApi = createApi({
       token && headers.set('Authorization', `Bearer ${token}`);
     },
   }),
+  tagTypes: ['ListAllFoods'],
   endpoints: (builder) => ({
     getAllFoods: builder.query({
       query: () => ({
         url: '/food/getAll',
         method: 'GET',
       }),
+      providesTags: ['ListAllFoods'],
+    }),
+    addItem: builder.mutation({
+      query: ({ name, price, picUrl, categoryId }: itemsApiBody) => ({
+        url: '/food/create',
+        method: 'POST',
+        body: {
+          name,
+          price,
+          // picUrl,
+          categoryId,
+        },
+      }),
+      invalidatesTags: ['ListAllFoods'],
     }),
   }),
 });
 
-export const { useGetAllFoodsQuery } = foodApi;
+export const { useGetAllFoodsQuery, useAddItemMutation } = foodApi;

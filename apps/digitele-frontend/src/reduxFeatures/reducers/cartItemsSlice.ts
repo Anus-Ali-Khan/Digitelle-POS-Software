@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type CartItemType = {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   quantity: number;
@@ -21,11 +21,11 @@ export const cartItemSlice = createSlice({
   reducers: {
     addCartItem: (state, action: PayloadAction<CartItemType>) => {
       const foundedItem = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
       if (foundedItem) {
         state.cartItems = state.cartItems.map((item) => {
-          if (item.id === foundedItem.id) {
+          if (item._id === foundedItem._id) {
             return { ...foundedItem, quantity: foundedItem.quantity + 1 };
           } else {
             return item;
@@ -40,18 +40,21 @@ export const cartItemSlice = createSlice({
     },
     removeCartItem: (state, action: PayloadAction<CartItemType>) => {
       const foundedItem = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
       if (foundedItem) {
         state.cartItems = state.cartItems.filter((item) => {
-          return item.id !== foundedItem.id;
+          return item._id !== foundedItem._id;
         });
       }
     },
     decrement: (state, action: PayloadAction<CartItemType>) => {
       state.cartItems = state.cartItems.map((item) => {
-        if (item.id === action.payload.id) {
-          return { ...action.payload, quantity: action.payload.quantity - 1 };
+        if (item._id === action.payload._id) {
+          return {
+            ...item,
+            quantity: item.quantity === 0 ? 0 : item.quantity - 1,
+          };
         } else {
           return item;
         }

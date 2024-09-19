@@ -31,7 +31,7 @@ const FoodItems: FC<FoodItemProps> = ({
   });
 
   const { data: foodItems, isLoading } = useGetAllFoodsQuery('');
-  console.log(foodItems.data);
+  console.log(foodItems);
 
   if (isLoading) {
     return <h1>Loading....</h1>;
@@ -45,7 +45,7 @@ const FoodItems: FC<FoodItemProps> = ({
       <div className="flex flex-wrap px-4 justify-around gap-4 mt-2 overflow-y-auto">
         {foodItems?.data?.map((item: FoodItemsType) => (
           <div
-            key={item.id}
+            key={item._id}
             // style={{ backgroundImage: `url(${item.img})` }}
             className="flex flex-col text-white h-[200px] w-[200px] rounded-md bg-cover relative max-[426px]:w-[300px] max-[321px]:w-[250px]"
           >
@@ -88,9 +88,11 @@ const FoodItems: FC<FoodItemProps> = ({
           onClick={() => setSelectedItemsTab(ItemsTabs.AddCategories)}
         />
       </div>
-      <div className="bg-red-500 min-[769px]:hidden text-white rounded-full absolute right-6 bottom-10 z-10 px-2 max-[426px]:right-1">
-        <p>{totalCartItems}</p>
-      </div>
+      {totalCartItems > 0 ? (
+        <div className="bg-red-500 min-[769px]:hidden text-white rounded-full absolute right-6 bottom-10 z-10 px-2 max-[426px]:right-1">
+          <p>{totalCartItems}</p>
+        </div>
+      ) : null}
       <div className="min-[769px]:hidden absolute right-8 bottom-3 bg-white rounded-full p-3 hover:text-white hover:bg-Primary max-[426px]:right-2">
         <MdOutlineShoppingCart
           size={30}
