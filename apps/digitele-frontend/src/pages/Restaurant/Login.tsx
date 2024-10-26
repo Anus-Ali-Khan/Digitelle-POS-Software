@@ -26,14 +26,14 @@ const Login = () => {
 
   const onSubmit = async (data: LoginSchema) => {
     try {
-      const response = await loginMutation({
-        email: data.email,
-        password: data.password,
-      });
+      //   const response = await loginMutation({
+      //     email: data.email,
+      //     password: data.password,
+      //   });
       // console.log(response.data.data);
-      if (response.data) {
-        dispatch(setUser(response.data.data.user));
-        dispatch(setToken(response.data.data.token));
+      if (data) {
+        // dispatch(setUser(response.data.data.user));
+        // dispatch(setToken(response.data.data.token));
         navigate('/welcome', { replace: false });
       }
     } catch (err) {

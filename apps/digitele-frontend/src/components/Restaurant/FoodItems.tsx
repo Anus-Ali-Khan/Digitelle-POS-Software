@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useGetAllFoodsQuery } from '../../redux/Slices/foodCart.slice';
 import { FoodItemsType } from '../../types/apiSlices/foodCart';
+import { foodItemsList } from '../../utils/constants';
 
 type FoodItemProps = {
   isCartOpen: boolean;
@@ -43,10 +44,10 @@ const FoodItems: FC<FoodItemProps> = ({
         Food Items
       </p>
       <div className="flex flex-wrap px-4 justify-around gap-4 mt-2 overflow-y-auto">
-        {foodItems?.data?.map((item: FoodItemsType) => (
+        {foodItemsList.map((item) => (
           <div
             key={item._id}
-            // style={{ backgroundImage: `url(${item.img})` }}
+            style={{ backgroundImage: `url(${item.img})` }}
             className="flex flex-col text-white h-[200px] w-[200px] rounded-md bg-cover relative max-[426px]:w-[300px] max-[321px]:w-[250px]"
           >
             <div className="h-[200px] w-[200px] bg-black rounded-md opacity-20 max-[426px]:w-[300px] max-[321px]:w-[250px]"></div>

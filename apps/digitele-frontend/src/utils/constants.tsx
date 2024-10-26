@@ -49,13 +49,13 @@ export const navLinks: navLinksTypes[] = [
   {
     id: 5,
     title: 'Exit',
-    href: '/exit',
+    href: '/login',
     icon: <RxExit className="h-9 w-9 max-[769px]:h-6 max-[769px]:w-6" />,
   },
 ];
 
 type foodItemsTypes = {
-  id: number;
+  _id: number;
   name: string;
   price: string;
   quantity: number;
@@ -64,87 +64,87 @@ type foodItemsTypes = {
 
 export const foodItemsList: foodItemsTypes[] = [
   {
-    id: 1,
+    _id: 1,
     name: 'Zinger Burger',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Burger,
   },
   {
-    id: 2,
+    _id: 2,
     name: 'Smashed Avo',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Avo,
   },
   {
-    id: 3,
+    _id: 3,
     name: 'Huevos Rancheros',
     price: '10',
-    quantity:1,
+    quantity: 1,
     img: Rancheros,
   },
   {
-    id: 4,
+    _id: 4,
     name: 'Zinger Burger',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Burger,
   },
   {
-    id: 5,
+    _id: 5,
     name: 'Smashed Avo',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Avo,
   },
   {
-    id: 6,
+    _id: 6,
     name: 'Huevos Rancheros',
     price: '10',
-    quantity:1,
+    quantity: 1,
     img: Rancheros,
   },
   {
-    id: 7,
+    _id: 7,
     name: 'Zinger Burger',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Burger,
   },
   {
-    id: 8,
+    _id: 8,
     name: 'Smashed Avo',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Avo,
   },
   {
-    id: 9,
+    _id: 9,
     name: 'Huevos Rancheros',
     price: '10',
-    quantity:1,
+    quantity: 1,
     img: Rancheros,
   },
   {
-    id: 10,
+    _id: 10,
     name: 'Zinger Burger',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Burger,
   },
   {
-    id: 11,
+    _id: 11,
     name: 'Smashed Avo',
     price: '30',
-    quantity:1,
+    quantity: 1,
     img: Avo,
   },
   {
-    id: 12,
+    _id: 12,
     name: 'Huevos Rancheros',
     price: '10',
-    quantity:1,
+    quantity: 1,
     img: Rancheros,
   },
 ];
